@@ -6,18 +6,20 @@ namespace Ardenexal\FHIRTools\Component\Models\R4\Extension;
 
 use Ardenexal\FHIRTools\Component\Metadata\Attribute\FHIRExtensionDefinition;
 use Ardenexal\FHIRTools\Component\Metadata\Attribute\FhirProperty;
+use Ardenexal\FHIRTools\Component\Metadata\Attribute\Validation\FHIRExtensionContext;
 use Ardenexal\FHIRTools\Component\Models\R4\DataType\CodeableConcept;
 use Ardenexal\FHIRTools\Component\Models\R4\DataType\Extension;
 
 /**
- * @author HL7 International / Patient Administration
+ * @author HL7 International / FHIR Infrastructure
  *
- * @see http://hl7.org/fhir/StructureDefinition/patient-adoptionInfo
+ * @see http://hl7.org/fhir/StructureDefinition/address-classification
  *
- * @description Code indication the adoption status of the patient.
+ * @description Provides further classification of a Postal address beyond the information in Address.use.
  */
-#[FHIRExtensionDefinition(url: 'http://hl7.org/fhir/StructureDefinition/patient-adoptionInfo', fhirVersion: 'R4')]
-class PatAdoptionInfoExtension extends Extension
+#[FHIRExtensionDefinition(url: 'http://hl7.org/fhir/StructureDefinition/address-classification', fhirVersion: 'R4')]
+#[FHIRExtensionContext(type: 'element', expression: 'Address')]
+class AddressClassificationExtension extends Extension
 {
     public function __construct(
         /** @var CodeableConcept|null valueCodeableConcept Value of extension */
@@ -29,7 +31,7 @@ class PatAdoptionInfoExtension extends Extension
         parent::__construct(
             id: $id,
             extension: $extension,
-            url: 'http://hl7.org/fhir/StructureDefinition/patient-adoptionInfo',
+            url: 'http://hl7.org/fhir/StructureDefinition/address-classification',
             value: $this->valueCodeableConcept,
         );
     }
